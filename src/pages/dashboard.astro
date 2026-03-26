@@ -1,0 +1,38 @@
+---
+import Dashboard from '../layouts/Dashboard.astro';
+---
+<Dashboard>
+  <div class="dashboard-shell">
+    <!-- FILE TREE -->
+    <div class="panel" id="file-tree">
+      <div class="panel-header">FILES</div>
+    </div>
+
+    <!-- EDITOR -->
+    <div class="panel editor-panel" id="editor-panel">
+      <div class="panel-header">EDITOR</div>
+      <div class="editor-empty">Select a file from the tree</div>
+    </div>
+
+    <!-- VISUALIZATION -->
+    <div class="panel viz-panel" id="viz-panel">
+      <div class="panel-header">VISUALIZATION</div>
+      <div class="viz-content">
+        <div class="viz-empty">Select a file to visualize</div>
+      </div>
+    </div>
+
+    <!-- STATUS BAR -->
+    <div class="status-bar">
+      <span class="status-db">IndexedDB</span>
+      <span class="status-path" id="status-path">--</span>
+      <span class="status-type" id="status-type">--</span>
+      <span class="status-modified" id="status-modified"></span>
+    </div>
+  </div>
+
+  <script>
+    import { initDashboard } from '../scripts/dashboard/init.js';
+    initDashboard();
+  </script>
+</Dashboard>
