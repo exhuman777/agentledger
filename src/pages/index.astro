@@ -1,14 +1,11 @@
 ---
-import '../styles/tokens.css';
+import Landing from '../layouts/Landing.astro';
 ---
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agent Ledger</title>
-</head>
-<body>
-  <h1 style="font-family: var(--mono); color: var(--accent);">AGENT LEDGER</h1>
-  <p style="font-family: var(--sans);">Verifiable, composable agent execution.</p>
-</body>
-</html>
+<Landing>
+  <main style="padding: 48px;">
+    <div class="sys-label">PROTOCOL_SPEC // V0.1</div>
+    <h1 style="font-family: var(--mono); font-size: var(--step-3); font-weight: 700;">
+      Verifiable, composable <span style="color: var(--accent);">agent execution.</span>
+    </h1>
+  </main>
+</Landing>
