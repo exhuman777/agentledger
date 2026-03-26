@@ -21,22 +21,17 @@ import StackDiagram from '../components/StackDiagram.astro';
       </div>
     </div>
     <div class="hero-right">
-      <div class="artifact-wrapper" id="hero-artifact">
-        <div class="artifact-bg"></div>
-        <canvas id="artifact-canvas"></canvas>
-        <svg class="artifact-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-          <line x1="50" y1="0" x2="50" y2="100" class="draft-line" />
-          <line x1="0" y1="50" x2="100" y2="50" class="draft-line" />
-          <line x1="10" y1="10" x2="90" y2="90" class="draft-line" />
-          <line x1="10" y1="90" x2="90" y2="10" class="draft-line" />
-          <rect x="10" y="10" width="80" height="80" class="bounding-box" />
-          <rect x="8.5" y="8.5" width="3" height="3" class="node" />
-          <rect x="88.5" y="8.5" width="3" height="3" class="node" />
-          <rect x="8.5" y="88.5" width="3" height="3" class="node" />
-          <rect x="88.5" y="88.5" width="3" height="3" class="node" />
-        </svg>
-        <div class="artifact-label lbl-top">OBJ_DEF // STACK_LAYERS</div>
-        <div class="artifact-label lbl-bottom">SCALE: 0.1.0</div>
+      <div class="diagnostic-frame" id="hero-diagnostic">
+        <div class="crosshair ch-tl"></div>
+        <div class="crosshair ch-tr"></div>
+        <div class="crosshair ch-bl"></div>
+        <div class="crosshair ch-br"></div>
+        <canvas id="oscilloscope"></canvas>
+        <div class="data-readout">
+          <div class="data-row"><span class="label">TRUST_SCORE</span><span class="value" id="val-trust">0.97</span></div>
+          <div class="data-row"><span class="label">STEPS_VERIFIED</span><span class="value" id="val-steps">0042</span></div>
+          <div class="data-row"><span class="label">HASH_INTEGRITY</span><span class="value" id="val-hash">100%</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -152,7 +147,7 @@ import StackDiagram from '../components/StackDiagram.astro';
   <div style="height: 48px;"></div>
 
   <script>
-    import { initStackArtifact } from '../scripts/stack-artifact.js';
-    initStackArtifact();
+    import { initOscilloscope } from '../scripts/oscilloscope.js';
+    initOscilloscope();
   </script>
 </Landing>

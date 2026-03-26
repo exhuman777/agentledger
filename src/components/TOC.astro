@@ -25,23 +25,25 @@ const tocHeadings = headings.filter(h => h.depth <= 3);
     position: sticky;
     top: 49px;
     height: calc(100vh - 49px);
-    border-left: 1px solid var(--border);
+    border-left: 1px solid rgba(255,255,255,0.08);
+    background: var(--bg-base);
   }
   .toc-title {
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--muted);
+    color: rgba(224, 224, 224, 0.35);
     margin-bottom: 12px;
     font-size: 9px;
   }
   .toc a {
     display: block;
     padding: 3px 0;
-    color: rgba(15, 15, 15, 0.5);
+    color: rgba(224, 224, 224, 0.45);
     text-decoration: none;
+    transition: color 0.1s;
   }
   .toc a:hover {
-    color: var(--ink);
+    color: #ffffff;
   }
   .toc a.active {
     color: var(--accent);

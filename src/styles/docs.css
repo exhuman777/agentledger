@@ -1,4 +1,4 @@
-/* Docs layout */
+/* Docs layout -- dark diagnostic terminal */
 
 .docs-layout {
   display: grid;
@@ -7,7 +7,7 @@
 }
 
 .docs-header {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   position: sticky;
   top: 0;
   background: var(--bg-base);
@@ -23,9 +23,10 @@
 .docs-breadcrumb {
   font-family: var(--mono);
   font-size: 10px;
-  color: var(--muted);
+  color: rgba(224, 224, 224, 0.35);
   margin-bottom: 32px;
   letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 .docs-breadcrumb span {
@@ -39,11 +40,12 @@
   font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: 8px;
+  color: var(--ink);
 }
 
 .docs-content .page-desc {
   font-size: 15px;
-  color: rgba(15, 15, 15, 0.6);
+  color: rgba(224, 224, 224, 0.55);
   line-height: 1.5;
   margin-bottom: 40px;
 }
@@ -55,8 +57,9 @@
   margin-top: 40px;
   margin-bottom: 12px;
   padding-top: 24px;
-  border-top: 1px dotted var(--border);
+  border-top: 1px dotted rgba(255,255,255,0.08);
   letter-spacing: -0.01em;
+  color: var(--ink);
 }
 
 .docs-content h2:first-of-type {
@@ -70,26 +73,30 @@
   font-weight: 700;
   margin-top: 24px;
   margin-bottom: 8px;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .docs-content p {
   font-size: 14px;
   line-height: 1.7;
   margin-bottom: 16px;
-  color: rgba(15, 15, 15, 0.8);
+  color: rgba(224, 224, 224, 0.75);
 }
 
 .docs-content code {
   font-family: var(--mono);
   font-size: 12px;
-  background: rgba(15, 15, 15, 0.05);
+  background: rgba(0, 20, 5, 0.6);
   padding: 2px 6px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--accent);
 }
 
 .docs-content pre {
-  background: rgba(15, 15, 15, 0.03);
-  border: 1px solid var(--border);
+  background: rgba(0, 20, 5, 0.5);
+  border: 1px solid rgba(255,255,255,0.08);
   padding: 20px;
   font-family: var(--mono);
   font-size: 12px;
@@ -102,13 +109,14 @@
   background: none;
   padding: 0;
   border: none;
+  color: var(--accent);
 }
 
 .docs-content ul, .docs-content ol {
   margin: 0 0 16px 24px;
   font-size: 14px;
   line-height: 1.7;
-  color: rgba(15, 15, 15, 0.8);
+  color: rgba(224, 224, 224, 0.75);
 }
 
 .docs-content li {
@@ -125,22 +133,24 @@
 .docs-content th {
   text-align: left;
   padding: 8px 12px;
-  border-bottom: 2px solid var(--ink);
+  border-bottom: 2px solid rgba(255,255,255,0.15);
   font-family: var(--mono);
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--muted);
+  color: rgba(224, 224, 224, 0.4);
 }
 
 .docs-content td {
   padding: 8px 12px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
   font-family: var(--mono);
+  color: var(--ink);
 }
 
 .docs-content strong {
   font-weight: 700;
+  color: var(--ink);
 }
 
 .docs-content a {

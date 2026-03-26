@@ -22,13 +22,14 @@ const { activeNav = '' } = Astro.props;
     padding: 16px 32px;
     font-family: var(--mono);
     font-size: 11px;
+    border-bottom: 1px solid var(--border);
   }
 
   .header-logo {
     font-weight: 700;
     font-size: 13px;
     letter-spacing: -0.02em;
-    color: var(--ink);
+    color: #ffffff;
     text-decoration: none;
   }
 
@@ -42,7 +43,7 @@ const { activeNav = '' } = Astro.props;
   }
 
   .header-nav a {
-    color: var(--muted);
+    color: rgba(224, 224, 224, 0.5);
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -51,7 +52,7 @@ const { activeNav = '' } = Astro.props;
   }
 
   .header-nav a:hover {
-    color: var(--ink);
+    color: #ffffff;
   }
 
   .header-nav a.active {

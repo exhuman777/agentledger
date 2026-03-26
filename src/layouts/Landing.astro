@@ -22,24 +22,12 @@ const {
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body class="blueprint-page">
-  <canvas id="grain-canvas"></canvas>
+  <div class="noise-overlay"></div>
   <div class="macro-grid"></div>
 
   <div class="blueprint-content">
     <Header />
     <slot />
   </div>
-
-  <div class="coord-display">
-    POS_X: <span id="pos-x">0000</span><br>
-    POS_Y: <span id="pos-y">0000</span>
-  </div>
-
-  <script>
-    import { initGrainShader } from '../scripts/grain-shader.js';
-    import { initParallax } from '../scripts/parallax.js';
-    initGrainShader();
-    initParallax();
-  </script>
 </body>
 </html>

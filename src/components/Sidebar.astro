@@ -65,7 +65,7 @@ const sections = [
 
 <style>
   .sidebar {
-    border-right: 1px solid var(--border);
+    border-right: 1px solid rgba(255,255,255,0.08);
     padding: 24px 20px;
     font-family: var(--mono);
     font-size: 11px;
@@ -73,6 +73,7 @@ const sections = [
     top: 49px;
     height: calc(100vh - 49px);
     overflow-y: auto;
+    background: var(--bg-base);
   }
   .sidebar-section {
     margin-bottom: 24px;
@@ -81,7 +82,7 @@ const sections = [
     font-size: 9px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--muted);
+    color: rgba(224, 224, 224, 0.35);
     margin-bottom: 8px;
     display: flex;
     align-items: center;
@@ -96,13 +97,14 @@ const sections = [
   .sidebar a {
     display: block;
     padding: 4px 0 4px 12px;
-    color: rgba(15, 15, 15, 0.6);
+    color: rgba(224, 224, 224, 0.5);
     text-decoration: none;
     border-left: 1px solid transparent;
     line-height: 1.6;
+    transition: color 0.1s;
   }
   .sidebar a:hover {
-    color: var(--ink);
+    color: #ffffff;
   }
   .sidebar a.active {
     color: var(--accent);
