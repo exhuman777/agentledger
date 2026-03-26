@@ -1,0 +1,111 @@
+/* Agent Ledger -- Design Tokens */
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg-base: #e2e2df;
+  --bg-light: #eae9e6;
+  --bg-card: rgba(248, 248, 248, 0.5);
+  --ink: #0f0f0f;
+  --accent: #ea4e24;
+  --muted: rgba(15, 15, 15, 0.5);
+  --grid-line: rgba(15, 15, 15, 0.06);
+  --draft-line: rgba(220, 167, 158, 0.7);
+  --border: rgba(15, 15, 15, 0.1);
+
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Inter', sans-serif;
+
+  --step--2: clamp(0.69rem, calc(0.66rem + 0.18vw), 0.80rem);
+  --step--1: clamp(0.83rem, calc(0.78rem + 0.29vw), 1.00rem);
+  --step-0: clamp(1.00rem, calc(0.91rem + 0.43vw), 1.25rem);
+  --step-1: clamp(1.20rem, calc(1.07rem + 0.63vw), 1.56rem);
+  --step-2: clamp(1.44rem, calc(1.26rem + 0.89vw), 1.95rem);
+  --step-3: clamp(1.73rem, calc(1.48rem + 1.24vw), 2.44rem);
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sys-label {
+  font-family: var(--mono);
+  font-size: var(--step--2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.sys-label::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background: var(--accent);
+}
