@@ -44,5 +44,9 @@ const breadcrumbSection = section.charAt(0).toUpperCase() + section.slice(1);
     </main>
     <TOC headings={headings} />
   </div>
+  <script>
+    import { initTocTracker } from '../scripts/toc-tracker.js';
+    document.addEventListener('DOMContentLoaded', initTocTracker);
+  </script>
 </body>
 </html>
