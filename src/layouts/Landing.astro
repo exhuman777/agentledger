@@ -1,0 +1,45 @@
+---
+import '../styles/tokens.css';
+import '../styles/blueprint.css';
+import Header from '../components/Header.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Agent Ledger -- Verifiable, composable agent execution',
+  description = 'An open, vendor-neutral specification for how AI agents do work together and how humans verify that work was done correctly.'
+} = Astro.props;
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body class="blueprint-page">
+  <canvas id="grain-canvas"></canvas>
+  <div class="macro-grid"></div>
+
+  <div class="blueprint-content">
+    <Header />
+    <slot />
+  </div>
+
+  <div class="coord-display">
+    POS_X: <span id="pos-x">0000</span><br>
+    POS_Y: <span id="pos-y">0000</span>
+  </div>
+
+  <script>
+    import { initGrainShader } from '../scripts/grain-shader.js';
+    import { initParallax } from '../scripts/parallax.js';
+    initGrainShader();
+    initParallax();
+  </script>
+</body>
+</html>
