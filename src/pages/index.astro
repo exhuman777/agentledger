@@ -1,11 +1,158 @@
 ---
 import Landing from '../layouts/Landing.astro';
+import AnalogyTable from '../components/AnalogyTable.astro';
+import SpecCard from '../components/SpecCard.astro';
+import StackDiagram from '../components/StackDiagram.astro';
 ---
 <Landing>
-  <main style="padding: 48px;">
-    <div class="sys-label">PROTOCOL_SPEC // V0.1</div>
-    <h1 style="font-family: var(--mono); font-size: var(--step-3); font-weight: 700;">
-      Verifiable, composable <span style="color: var(--accent);">agent execution.</span>
-    </h1>
-  </main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="sys-label">PROTOCOL_SPEC // V0.1</div>
+      <h1>Verifiable, composable <span>agent execution.</span></h1>
+      <p class="hero-desc">
+        An open, vendor-neutral specification for how AI agents do work together
+        and how humans verify that work was done correctly. The missing layer
+        between capabilities and trust.
+      </p>
+      <div class="hero-ctas">
+        <a href="/docs/concepts/what-is-agent-ledger" class="btn btn-primary">Get Started</a>
+        <a href="https://github.com/agentledger/agentledger" class="btn" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="artifact-wrapper" id="hero-artifact">
+        <div class="artifact-bg"></div>
+        <canvas id="artifact-canvas"></canvas>
+        <svg class="artifact-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <line x1="50" y1="0" x2="50" y2="100" class="draft-line" />
+          <line x1="0" y1="50" x2="100" y2="50" class="draft-line" />
+          <line x1="10" y1="10" x2="90" y2="90" class="draft-line" />
+          <line x1="10" y1="90" x2="90" y2="10" class="draft-line" />
+          <rect x="10" y="10" width="80" height="80" class="bounding-box" />
+          <rect x="8.5" y="8.5" width="3" height="3" class="node" />
+          <rect x="88.5" y="8.5" width="3" height="3" class="node" />
+          <rect x="8.5" y="88.5" width="3" height="3" class="node" />
+          <rect x="88.5" y="88.5" width="3" height="3" class="node" />
+        </svg>
+        <div class="artifact-label lbl-top">OBJ_DEF // STACK_LAYERS</div>
+        <div class="artifact-label lbl-bottom">SCALE: 0.1.0</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="blueprint-sep" />
+
+  <!-- GAP ANALYSIS -->
+  <section class="landing-section">
+    <div class="sys-label">GAP_ANALYSIS</div>
+    <h2>The <span>missing</span> layer</h2>
+    <p class="section-desc">
+      Agent Skills defines what agents can do. Agent Companies defines how they're organized.
+      Neither defines how agents execute work together, or how you verify the results.
+    </p>
+    <AnalogyTable />
+  </section>
+
+  <hr class="blueprint-sep" />
+
+  <!-- SPECIFICATION CARDS -->
+  <section class="landing-section landing-section-wide">
+    <div class="sys-label">SPECIFICATION</div>
+    <h2>Three <span>file types.</span> One standard.</h2>
+    <p class="section-desc">
+      Same design philosophy as Agent Skills: markdown, Git-friendly, progressive disclosure, vendor-neutral.
+    </p>
+    <div class="spec-grid">
+      <SpecCard
+        title="WORKFLOW.MD"
+        subtitle="Composition"
+        description="Declarative multi-step execution plans. Chain agents and skills into pipelines with human gates, parallel steps, and rollback handling."
+        code="gate: human-approval"
+      />
+      <SpecCard
+        title="LEDGER.MD"
+        subtitle="Verification"
+        description="Append-only execution records. Content-addressable hashes on every input and output. Every step traces to a specific skill version, agent, and human decision."
+        code="output_hash: sha256:abc..."
+      />
+      <SpecCard
+        title="TRUST.MD"
+        subtitle="Capabilities"
+        description="Fine-grained permission declarations. Agents declare what they need. Runtimes enforce what they're allowed. Humans see the delta."
+        code="filesystem: write (scope: /deploy/*)"
+      />
+    </div>
+  </section>
+
+  <hr class="blueprint-sep" />
+
+  <!-- CODE EXAMPLE -->
+  <section class="landing-section landing-section-wide">
+    <div class="sys-label">EXAMPLE // WORKFLOW</div>
+    <h2>Write once, <span>run anywhere.</span></h2>
+    <p class="section-desc">
+      A workflow that works across Claude Code, Cursor, Gemini CLI, or any compliant runtime.
+    </p>
+    <div class="code-example">
+      <div class="code-file-label">WORKFLOW.MD</div>
+      <pre><span class="cc">---</span>
+<span class="ck">name:</span> <span class="cv">code-review-and-deploy</span>
+<span class="ck">description:</span> <span class="cs">Review, test, approve, deploy.</span>
+<span class="ck">schema:</span> <span class="cv">agentledger/v1</span>
+<span class="cc">---</span>
+
+<span class="cc">## Steps</span>
+
+<span class="cc">### lint</span>
+<span class="ck">- skill:</span> <span class="cs">code-linting</span>
+<span class="ck">- agent:</span> <span class="cs">acme/reviewer</span>
+<span class="ck">- gate:</span> <span class="cv">auto-pass</span>
+<span class="ck">- parallel:</span> <span class="cs">[test]</span>
+
+<span class="cc">### review</span>
+<span class="ck">- skill:</span> <span class="cs">code-review</span>
+<span class="ck">- agent:</span> <span class="cs">acme/senior-reviewer</span>
+<span class="ck">- gate:</span> <span class="cv">human-approval</span>
+
+<span class="cc">### deploy</span>
+<span class="ck">- skill:</span> <span class="cs">deployment</span>
+<span class="ck">- agent:</span> <span class="cs">acme/deploy-bot</span>
+<span class="ck">- gate:</span> <span class="cv">human-approval</span>
+<span class="ck">- rollback:</span> <span class="cs">revert-deploy</span></pre>
+    </div>
+  </section>
+
+  <hr class="blueprint-sep" />
+
+  <!-- STACK DIAGRAM -->
+  <section class="landing-section">
+    <div class="sys-label">ARCHITECTURE</div>
+    <h2>The full <span>stack.</span></h2>
+    <StackDiagram />
+  </section>
+
+  <hr class="blueprint-sep" />
+
+  <!-- CTA FOOTER -->
+  <section class="landing-cta">
+    <div class="sys-label" style="justify-content: center;">CONTRIBUTE</div>
+    <h2>Build the <span>trust layer.</span></h2>
+    <p>
+      Agent Ledger is open source, vendor-neutral, and designed for contribution.
+      The specification is draft-stage. Your input shapes the standard.
+    </p>
+    <div class="hero-ctas" style="justify-content: center;">
+      <a href="/docs/spec/workflow" class="btn btn-primary">Read the Spec</a>
+      <a href="https://github.com/agentledger/agentledger" class="btn" target="_blank" rel="noopener">GitHub</a>
+      <a href="#" class="btn">Discord</a>
+    </div>
+  </section>
+
+  <div style="height: 48px;"></div>
+
+  <script>
+    import { initStackArtifact } from '../scripts/stack-artifact.js';
+    initStackArtifact();
+  </script>
 </Landing>
