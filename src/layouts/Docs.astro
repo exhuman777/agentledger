@@ -1,0 +1,48 @@
+---
+import '../styles/tokens.css';
+import '../styles/docs.css';
+import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
+import TOC from '../components/TOC.astro';
+import PageNav from '../components/PageNav.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  slug: string;
+  headings: Array<{ depth: number; slug: string; text: string }>;
+  prev?: { label: string; slug: string };
+  next?: { label: string; slug: string };
+  section: string;
+}
+
+const { title, description, slug, headings, prev, next, section } = Astro.props;
+const breadcrumbSection = section.charAt(0).toUpperCase() + section.slice(1);
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title} -- Agent Ledger</title>
+  <meta name="description" content={description}>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+  <div class="docs-header">
+    <Header activeNav="docs" />
+  </div>
+  <div class="docs-layout">
+    <Sidebar currentSlug={slug} />
+    <main class="docs-content">
+      <div class="docs-breadcrumb">
+        Docs / {breadcrumbSection} / <span>{title}</span>
+      </div>
+      <h1>{title}</h1>
+      <p class="page-desc">{description}</p>
+      <slot />
+      <PageNav prev={prev} next={next} />
+    </main>
+    <TOC headings={headings} />
+  </div>
+</body>
+</html>

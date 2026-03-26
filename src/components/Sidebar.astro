@@ -1,0 +1,112 @@
+---
+interface Props {
+  currentSlug: string;
+}
+const { currentSlug } = Astro.props;
+
+const sections = [
+  {
+    title: 'Concepts',
+    items: [
+      { label: 'What is Agent Ledger?', slug: 'concepts/what-is-agent-ledger' },
+      { label: 'The Stack', slug: 'concepts/the-stack' },
+      { label: 'Unix Analogy', slug: 'concepts/unix-analogy' },
+    ]
+  },
+  {
+    title: 'Specification',
+    items: [
+      { label: 'WORKFLOW.md', slug: 'spec/workflow' },
+      { label: 'LEDGER.md', slug: 'spec/ledger' },
+      { label: 'TRUST.md', slug: 'spec/trust' },
+    ]
+  },
+  {
+    title: 'Guides',
+    items: [
+      { label: 'First Workflow', slug: 'guides/first-workflow' },
+      { label: 'Adding Support', slug: 'guides/adding-support' },
+      { label: 'Best Practices', slug: 'guides/best-practices' },
+    ]
+  },
+  {
+    title: 'Examples',
+    items: [
+      { label: 'Code Review', slug: 'examples/code-review' },
+      { label: 'Research Pipeline', slug: 'examples/research' },
+      { label: 'Deploy Pipeline', slug: 'examples/deploy' },
+    ]
+  },
+  {
+    title: 'Reference',
+    items: [
+      { label: 'Schema', slug: 'reference/schema' },
+      { label: 'Gate Types', slug: 'reference/gates' },
+      { label: 'Hashing', slug: 'reference/hashing' },
+    ]
+  },
+];
+---
+<aside class="sidebar">
+  {sections.map(section => (
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">{section.title}</div>
+      {section.items.map(item => (
+        <a
+          href={`/docs/${item.slug}`}
+          class:list={[{ active: currentSlug === item.slug }]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  ))}
+</aside>
+
+<style>
+  .sidebar {
+    border-right: 1px solid var(--border);
+    padding: 24px 20px;
+    font-family: var(--mono);
+    font-size: 11px;
+    position: sticky;
+    top: 49px;
+    height: calc(100vh - 49px);
+    overflow-y: auto;
+  }
+  .sidebar-section {
+    margin-bottom: 24px;
+  }
+  .sidebar-section-title {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .sidebar-section-title::before {
+    content: '';
+    width: 3px;
+    height: 3px;
+    background: var(--accent);
+  }
+  .sidebar a {
+    display: block;
+    padding: 4px 0 4px 12px;
+    color: rgba(15, 15, 15, 0.6);
+    text-decoration: none;
+    border-left: 1px solid transparent;
+    line-height: 1.6;
+  }
+  .sidebar a:hover {
+    color: var(--ink);
+  }
+  .sidebar a.active {
+    color: var(--accent);
+    border-left-color: var(--accent);
+    font-weight: 700;
+  }
+</style>
