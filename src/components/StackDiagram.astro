@@ -1,0 +1,60 @@
+---
+const layers = [
+  { label: 'VERIFICATION + COMPOSITION + TRUST', files: 'WORKFLOW.md / LEDGER.md / TRUST.md', isNew: true, arrow: 'Agent Ledger (new)' },
+  { label: 'ORGANIZATION', files: 'COMPANY.md / TEAM.md / AGENTS.md', isNew: false, arrow: 'Agent Companies' },
+  { label: 'CAPABILITIES', files: 'SKILL.md / scripts/ / references/', isNew: false, arrow: 'Agent Skills' },
+  { label: 'ANY COMPLIANT RUNTIME', files: 'Claude Code | Cursor | Gemini CLI | VS Code | ...', isNew: false, arrow: null },
+];
+---
+<div class="stack-diagram">
+  {layers.map((layer) => (
+    <>
+      <div class:list={['stack-row', { 'stack-row-new': layer.isNew, 'stack-row-muted': !layer.isNew && !layer.arrow }]}>
+        <span class="stack-row-label">{layer.label}</span>
+        <span class="stack-row-files">{layer.files}</span>
+      </div>
+      {layer.arrow && <div class="stack-row-arrow">^-- {layer.arrow}</div>}
+    </>
+  ))}
+</div>
+
+<style>
+  .stack-diagram {
+    border: 1px solid var(--ink);
+    padding: 32px;
+    font-family: var(--mono);
+    font-size: 11px;
+    background: rgba(248, 248, 248, 0.4);
+  }
+  .stack-row {
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: -1px;
+  }
+  .stack-row-new {
+    border-color: var(--accent);
+  }
+  .stack-row-new .stack-row-label,
+  .stack-row-new .stack-row-files {
+    color: var(--accent);
+  }
+  .stack-row-muted .stack-row-label {
+    color: var(--muted);
+  }
+  .stack-row-label {
+    font-weight: 700;
+  }
+  .stack-row-files {
+    color: var(--muted);
+    font-size: 10px;
+  }
+  .stack-row-arrow {
+    text-align: center;
+    padding: 4px;
+    color: var(--muted);
+    font-size: 10px;
+  }
+</style>

@@ -1,0 +1,56 @@
+---
+const rows = [
+  { unix: 'Commands (ls, grep)', agent: 'Agent Skills (SKILL.md)', exists: true },
+  { unix: 'Users, groups', agent: 'Agent Companies (COMPANY.md)', exists: true },
+  { unix: 'Pipes (stdin/stdout)', agent: 'Agent-to-agent handoff', exists: false },
+  { unix: 'Process model', agent: 'Execution lifecycle', exists: false },
+  { unix: 'Permissions (rwx)', agent: 'Capability / authority', exists: false },
+  { unix: 'Shell (bash)', agent: 'Workflow composition', exists: false },
+  { unix: 'Audit trail', agent: 'Verification log', exists: false },
+];
+---
+<table class="analogy-table">
+  <thead>
+    <tr><th>Unix Concept</th><th>Agent Equivalent</th><th>Status</th></tr>
+  </thead>
+  <tbody>
+    {rows.map(row => (
+      <tr>
+        <td>{row.unix}</td>
+        <td>{row.agent}</td>
+        <td class={row.exists ? 'status-exists' : 'status-missing'}>
+          {row.exists ? 'EXISTS' : 'MISSING'}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+<style>
+  .analogy-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    font-family: var(--mono);
+  }
+  .analogy-table th {
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 2px solid var(--ink);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .analogy-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .status-missing {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .status-exists {
+    color: rgba(15, 15, 15, 0.4);
+  }
+</style>
